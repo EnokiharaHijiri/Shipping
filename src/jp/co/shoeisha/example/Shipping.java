@@ -6,15 +6,15 @@ public class Shipping {
 	 * 
 	 * @param weight
 	 *            荷物の重さ(kg)
-	 * @param x
+	 * @param height
 	 *            荷物の縦幅(cm)
-	 * @param y
+	 * @param width
 	 *            荷物の横幅(cm)
-	 * @param z
+	 * @param length
 	 *            荷物の高さ(cm)
 	 * @return
 	 */
-	public int calculate(int weight,int x,int y,int z){
+	public int calculate(int weight,int height,int width,int length){
 		// kg , 縦, 横, 長さ
 		int size = 0; // 荷物のサイズ
 		int price = 0; // 送料
@@ -28,9 +28,9 @@ public class Shipping {
 			}
 
 			// ②3辺の合計が180cm以上
-			int max = x + y + z;
+			int max = height + width + length;
 			
-			if (x <= 0 || y <= 0 || x <= 0 || max >= 180) {
+			if (height <= 0 || width <= 0 || length <= 0 || max >= 180) {
 				throw new IllegalArgumentException();
 			}
 

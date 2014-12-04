@@ -3,18 +3,18 @@ package jp.co.shoeisha.example;
 public class Shipping {
 	/**
 	 * 荷物の総量を計算する
-	 *
+	 * 
 	 * @param weight
 	 *            荷物の重さ(kg)
-	 * @param x
+	 * @param height
 	 *            荷物の縦幅(cm)
-	 * @param y
+	 * @param width
 	 *            荷物の横幅(cm)
-	 * @param z
+	 * @param length
 	 *            荷物の高さ(cm)
 	 * @return
 	 */
-	public int calculate(int weight,int x,int y,int z){
+	public int calculate(int weight,int height,int width,int length){
 		// kg , 縦, 横, 長さ
 		int size = 0; // 荷物のサイズ
 		int price = 0; // 送料
@@ -28,23 +28,23 @@ public class Shipping {
 			}
 
 			// ②3辺の合計が180cm以上
-			int total = x + y + z;
-
-			if (x <= 0 || y <= 0 || x <= 0 || total >= 180) {
+			int max = height + width + length;
+			
+			if (height <= 0 || width <= 0 || length <= 0 || max >= 180) {
 				throw new IllegalArgumentException();
 			}
 
 			// ③送料を算出し戻り値を返却
-			if(total <= 60 && weight <= 10){
+			if(max <= 60 && weight <= 10){
 				size = 1;
-			} else if (total <= 120 && weight <= 20) {
+			} else if (max <= 120 && weight <= 20) {
 
 				size = 2;
-			} else if (total <= 180 && weight <= 30) {
+			} else if (max <= 180 && weight <= 30) {
 
 				size = 3;
 			}
-
+			
 			switch (size) {
 
 			case 1:
@@ -58,7 +58,7 @@ public class Shipping {
 			case 3:
 				price = 1800;
 				break;
-
+				
 			 default:
 				break;
 			}
